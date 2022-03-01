@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS gitfit_db;
+
+CREATE DATABASE gitfit_db;
