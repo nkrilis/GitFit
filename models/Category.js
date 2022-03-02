@@ -15,13 +15,13 @@ Category.init (
             type: DataTypes.STRING,
             allowNull: false,
         },
-        workout_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'workout',
-                key: 'id',
-            },
-        },
+        // workout_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'workout',
+        //         key: 'id',
+        //     },
+        // },
         // category_id: {
         //     type: DataTypes.INTEGER,
         //     references: {
