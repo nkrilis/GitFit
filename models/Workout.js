@@ -23,6 +23,10 @@ Workout.init (
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        rpe: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
     },
     {
         sequelize,
