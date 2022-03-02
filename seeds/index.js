@@ -1,6 +1,7 @@
 const sequelize = require('../config/connection');
 const seedCategory = require('./categoryData');
 const seedWorkout = require('./workoutData');
+const seedWorkoutCategory = require('./workoutCategoryData');
 
 const seedAll = async () =>
 {
@@ -9,6 +10,8 @@ const seedAll = async () =>
     await seedWorkout();
 
     await seedCategory();
+
+    await seedWorkoutCategory();
 
     process.exit(0);
 };
