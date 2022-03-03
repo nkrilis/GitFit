@@ -1,0 +1,26 @@
+<div class="ui container medium">
+  <div class="ui message">
+  <div class="header m-auto">
+    <h1>{{categoryData.name}} Workout Plan!</h1>
+  </div>
+</div>
+    <table class="ui large celled table">
+        <thead>
+          <tr><th>WORKOUT</th>
+          <th>SETS</th>
+          <th>REPS</th>
+          <th>RPE</th>
+        </tr></thead>
+        <tbody>
+        {{#each categoryData.workouts as |workout|}}
+          <tr>
+            <td data-label="WORKOUT">{{workout.name}}</td>
+            <td data-label="SETS">{{workout.sets}}</td>
+            <td data-label="REPS">{{workout.reps}}</td>
+            <td data-label="RPE">{{workout.rpe}}%</td>
+          </tr>
+        {{/each}}
+
+        </tbody>
+      </table>
+</div>

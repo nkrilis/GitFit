@@ -10,9 +10,39 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/jass.css">
+
+    <title>GitFit</title>
 </head>
 <body>
-    
+    <nav>
+        <div class="ui top medium fixed menu">
+            <a href="/" class="header item">
+            <h2>GitFit</h2>
+            </a>
+            <div class="right menu">
+                {{#if loggedIn}}
+                <div class="item">
+                    <div class="ui secondary button" id="logout">Logout</div>
+                </div>
+                {{else}}
+                <div class="item">
+                    <div class="ui secondary button" id="login">Login</div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+      </nav>
+
+      <main>
+          {{{body}}}
+      </main>
+
+
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+
 </body>
 </html>
