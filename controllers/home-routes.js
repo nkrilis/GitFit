@@ -3,31 +3,45 @@ const { Category, Workout, User } = require('../models');
 
 const withAuth = require('../utils/auth');
 
-router.get('/')
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
+
+// router.get('/', withAuth, async (req, res) => 
+// {
+//   if (req.session.loggedIn) {
+//     res.redirect('/');
+//     return;
+//   }
+
+// });
 
 router.get('/', async (req, res) => {
     try {
       const dbWorkoutData = await Category.findOne({
-        where: { id: 1 },
+        where: { id: 3 },
         include: [
             {
                 model: Workout,
-                attributes: ['name', 'sets', 'reps', 'rpe'],
+                attributes: ['id','name', 'sets', 'reps', 'rpe'],
             },
         ],
       });
   
-    //   const workouts = dbWorkoutData.map((workout) =>
-    //     workout.get({ plain: true })
-    //   );
+      const categoryData = dbWorkoutData.get({ plain: true });
 
-      res.status(200).json(dbWorkoutData);
+      // res.status(200).send(workout);
   
 
-    //   res.render('homepage', {
-    //     workouts,
-    //     loggedIn: req.session.loggedIn,
-    //   });
+      res.render('homepage', {
+        categoryData,
+        loggedIn: req.session.loggedIn,
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

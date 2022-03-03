@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {{!-- Import semantic-UI Framework --}}
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <link rel="stylesheet" href="./style.css">
-
-    <title>Document</title>
-</head>
-<body>
-    <div class="ui basic green button">Login</div>
-    <div class = "form-container">
+<div class = "form-container">
         <div class="ui cards">
             <div class="card">
                 <div class="content">
@@ -26,21 +9,20 @@
                         <form class="ui form">
                             <div class="field">
                                 <label>Email</label>
-                                <input type="text" name="email" placeholder="Email">
+                                <input type="text" name="email" placeholder="Email" id="email-login">
                             </div>
                             <div class="field">
                                 <label>Password</label>
-                                <input type="text" name="password" placeholder="Password">
+                                <input type="password" name="password" placeholder="Password" id="password-login">
                             </div>
                             <div class="ui two buttons">
-                                <div class="ui basic green button">Login</div>
-                                <div class="ui basic red button">Sign Up</div>
+                                <button class="ui basic green button" type="submit">Login</button>
+                                <button class="ui basic red button">Sign Up</button>
                             </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>    
 
-</body>
-
-</html>
-
+<script src="../public/js/login.js"></script>
