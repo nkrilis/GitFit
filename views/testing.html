@@ -25,44 +25,75 @@
             <h2>GitFit</h2>
             </a>
             <div class="right menu">
-                <div class="item">
-                    <div class="ui secondary button">Sign Up</div>
-                </div>
+            
                 <div class="item">
                     <div class="ui secondary button">Log in</div>
                 </div>
             </div>
         </div>
-    </nav>    
+    </nav>     
 
-    <div class = "form-container">
-        <div class="ui cards">
-            <div class="card">
-                <div class="content">
-                    <div class="header">
-                        GitFit
-                    </div>
-                    <div class="extra content">
-                        <form class="ui form">
+<div class="form-signup-container">
+            <div class="content">
+                <button class="ui button">
+                    GitFit
+                </button>
+                    <div class="ui large form">
+                        <div class="two fields">
                             <div class="field">
                                 <label>Email</label>
-                                <input type="text" name="email" placeholder="Email">
+                                <input placeholder="email" type="text">
                             </div>
                             <div class="field">
                                 <label>Password</label>
-                                <input type="text" name="password" placeholder="Password">
+                                <input placeholder="password" type="text">
                             </div>
-                            <div class="ui two buttons">
-                                <button class="ui basic green button">Login</button>
+                        </div>
+                            <div class="field">
+                                <label>Category</label>
+                                <div class="ui selection dropdown">
+                                    <input type="hidden" name="Category">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Category</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1">Body Building</div>
+                                        <div class="item" data-value="0">Power Lifting</div>
+                                        <div class="item" data-value="2">Hypertrophy Training</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="two fields">
+                            <div class="field">
+                                <label>Height</label>
+                                <input placeholder="Height" type="text">
+                            </div>
+                            <div class="field">
+                                <label>Weight</label>
+                                <input placeholder="Weight" type="text">
+                            </div>
+                            </div>
+                            <div class="field ">
+                                <label>Gender</label>
+                                <div class="ui selection dropdown">
+                                    <input type="hidden" name="gender">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Gender</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1">Male</div>
+                                        <div class="item" data-value="0">Female</div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                                 <button class="ui basic red button">Sign Up</button>
                             </div>
+                        
                     </div>
-                </div>
+               
             </div>
-        </div>
-    </div>
+</div>        
        
-<div class="ui container medium">
+<!-- <div class="ui container medium">
     <table class="ui large celled table">
         <thead>
           <tr><th>WORKOUT</th>
@@ -85,7 +116,7 @@
           </tr>
         </tbody>
       </table>
-</div>
+</div> -->
 
 </body>
 

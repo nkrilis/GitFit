@@ -13,4 +13,17 @@ body{
     margin: auto;
     
 }
+.form-signup-container{
+    width: 800px;
+    height: auto;
+    padding: 20px 20px;
+    background-color: #ffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #0000;
+    margin: auto;
+}
+button{
+    margin: ;
+}
+    
 
