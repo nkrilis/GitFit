@@ -21,10 +21,10 @@ router.get('/login', (req, res) => {
 
 // });
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
       const dbWorkoutData = await Category.findOne({
-        where: { id: 3 },
+        where: { id: 2 },
         include: [
             {
                 model: Workout,
