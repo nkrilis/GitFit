@@ -24,6 +24,34 @@ const { User } = require('../../models');
 //       res.status(500).json(err);
 //     }
 //   });
+router.post('/signup', async (req, res) => {
+  try 
+  {
+
+    const dbUserData = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      height: req.body.height,
+      weight: req.body.weight,
+      age: req.body.age,
+      password: req.body.password,
+      category_id: req.body.category_id
+      });
+
+    req.session.save(() => 
+    {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+
+  } 
+  catch (err) 
+  {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
   // Login
 router.post('/login', async (req, res) => {
@@ -43,12 +71,12 @@ router.post('/login', async (req, res) => {
   
       const validPassword = await dbUserData.checkPassword(req.body.password);
   
-      if (!validPassword) {
-        res
-          .status(400)
-          .json({ message: 'Incorrect email or password. Please try again!' });
-        return;
-      }
+      // if (!validPassword) {
+      //   res
+      //     .status(400)
+      //     .json({ message: 'Incorrect email or password. Please try again!' });
+      //   return;
+      // }
   
       req.session.save(() => {
         req.session.loggedIn = true;

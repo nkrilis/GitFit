@@ -24,11 +24,13 @@
             <div class="right menu">
                 {{#if loggedIn}}
                 <div class="item">
-                    <div class="ui secondary button" id="logout">Logout</div>
+                    <button class="ui secondary button" id="logout">Logout</button>
                 </div>
                 {{else}}
                 <div class="item">
-                    <div class="ui secondary button" id="login">Login</div>
+                    <a href="/login">
+                        <div class="ui secondary button" id="login">Login</div>
+                    </a>
                 </div>
                 {{/if}}
             </div>
