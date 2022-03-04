@@ -22,19 +22,11 @@ router.get('/signup', (req, res) =>
   res.render('signup');
 });
 
-// router.get('/', withAuth, async (req, res) => 
-// {
-//   if (req.session.loggedIn) {
-//     res.redirect('/');
-//     return;
-//   }
-
-// });
 
 router.get('/', withAuth, async (req, res) => {
     try {
       const dbWorkoutData = await Category.findOne({
-        where: { id: 2 },
+        where: { id: req.session.category },
         include: [
             {
                 model: Workout,

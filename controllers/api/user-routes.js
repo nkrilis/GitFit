@@ -1,46 +1,16 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// CREATE new user
-// router.post('/', async (req, res) => {
-//     try {
-//       const dbUserData = await User.create({
-//         name: req.body.name,
-//         email: req.body.email,
-//         height: req.body.height,
-//         weight: req.body.weight,
-//         age: req.body.age,
-//         password: req.body.password,
-//         category_id: req.body.category_id
-//       });
-  
-//       req.session.save(() => {
-//         req.session.loggedIn = true;
-  
-//         res.status(200).json(dbUserData);
-//       });
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//     }
-//   });
-router.post('/signup', async (req, res) => {
+
+router.post('/', async (req, res) => {
   try 
   {
-
-    const dbUserData = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      height: req.body.height,
-      weight: req.body.weight,
-      age: req.body.age,
-      password: req.body.password,
-      category_id: req.body.category_id
-      });
-
+    const dbUserData = await User.create(req.body);
+  
     req.session.save(() => 
     {
       req.session.loggedIn = true;
+      req.session.category = dbUserData.category_id;
 
       res.status(200).json(dbUserData);
     });
@@ -71,19 +41,20 @@ router.post('/login', async (req, res) => {
   
       const validPassword = await dbUserData.checkPassword(req.body.password);
   
-      // if (!validPassword) {
-      //   res
-      //     .status(400)
-      //     .json({ message: 'Incorrect email or password. Please try again!' });
-      //   return;
-      // }
+      if (!validPassword) {
+        res
+          .status(400)
+          .json({ message: 'Incorrect email or password. Please try again!' });
+        return;
+      }
   
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.category = dbUserData.category_id;
   
         res
           .status(200)
-          .json({ user: dbUserData, message: 'You are now logged in!' });
+          .json({ user: dbUserData, category: dbUserData.category_id, message: 'You are now logged in!' });
       });
     } catch (err) {
       console.log(err);
@@ -92,15 +63,15 @@ router.post('/login', async (req, res) => {
   });
   
   // // Logout
-  // router.post('/logout', (req, res) => {
-  //   if (req.session.loggedIn) {
-  //     req.session.destroy(() => {
-  //       res.status(204).end();
-  //     });
-  //   } else {
-  //     res.status(404).end();
-  //   }
-  // });
+  router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
   
   module.exports = router;
   

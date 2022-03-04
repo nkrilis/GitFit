@@ -3,6 +3,9 @@ const seedCategory = require('./categoryData');
 const seedWorkout = require('./workoutData');
 const seedWorkoutCategory = require('./workoutCategoryData');
 
+const userData = require('./userData.json');
+const { User } = require('../models');
+
 const seedAll = async () =>
 {
     await sequelize.sync({ force: true });
@@ -12,6 +15,11 @@ const seedAll = async () =>
     await seedCategory();
 
     await seedWorkoutCategory();
+
+    await User.bulkCreate(userData, {
+        individualHooks: true,
+        returning: true,
+    });
 
     process.exit(0);
 };
