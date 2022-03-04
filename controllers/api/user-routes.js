@@ -9,6 +9,7 @@ router.post('/', async (req, res) => {
   
     req.session.save(() => 
     {
+      req.session.loggedIn = false;
       req.session.category = dbUserData.category_id;
 
       res.status(200).json(dbUserData);
@@ -21,6 +22,16 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.put('/update', (req, res) => 
+// {
+//   if (req.session.loggedIn) {
+//     res.redirect('/');
+//     return;
+//   }
+
+//   res.render('update');
+// });
 
   // Login
 router.post('/login', async (req, res) => {

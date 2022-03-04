@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Workout, User } = require('../models');
+const { Category, Workout } = require('../models');
 
 const withAuth = require('../utils/auth');
 
@@ -22,6 +22,16 @@ router.get('/signup', (req, res) =>
   res.render('signup');
 });
 
+router.get('/update', (req, res) => 
+{
+  if (req.session.loggedIn) {
+    res.render('update');
+    return;
+  }
+
+  res.redirect('/');
+});
+
 
 router.get('/', withAuth, async (req, res) => {
     try {
@@ -36,14 +46,17 @@ router.get('/', withAuth, async (req, res) => {
       });
   
       const categoryData = dbWorkoutData.get({ plain: true });
+      // const categoryData = dbWorkoutData.map((info) => info.get({ plain: true }));
 
-      // res.status(200).send(workout);
+      // res.status(200).json(categoryData);
   
 
       res.render('homepage', {
         categoryData,
         loggedIn: req.session.loggedIn,
+        category: req.session.category
       });
+
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
