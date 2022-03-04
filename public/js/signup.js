@@ -2,6 +2,7 @@ const signupFormHandler = async (event) => {
 
   event.preventDefault();
 
+  const age = document.querySelector('#age').value.trim();
   const name = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
@@ -19,6 +20,7 @@ const signupFormHandler = async (event) => {
         password,
         height,
         weight,
+        age,
         gender,
         category,
       }),
@@ -33,8 +35,8 @@ const signupFormHandler = async (event) => {
   }
 };
 
-console.log("working");
+
 document
-.querySelector('#submit-form')
+.querySelector('.form')
 .addEventListener('submit', signupFormHandler);
 
