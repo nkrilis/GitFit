@@ -1,0 +1,20 @@
+[
+    {
+      "name": "Nick",
+      "email": "nick@email.com",
+      "height": 171,
+      "weight": 200,
+      "age": 26,
+      "password": "123456789",
+      "category_id": 1
+    },
+    {
+        "name": "Sample",
+        "email": "sample@email.com",
+        "height": 150,
+        "weight": 175,
+        "age": 22,
+        "password": "123456789",
+        "category_id": 2
+      }
+]  

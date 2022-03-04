@@ -8,11 +8,12 @@
        
     <!-- {{!-- Import semantic-UI Framework --}} -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <!-- <link rel="stylesheet" href="../public/css/style.css"> -->
+    <link rel="stylesheet" href="../public/css/style.css">
     
     
     <title>Document</title>
@@ -33,7 +34,74 @@
         </div>
     </nav>     
 
-<div class="form-signup-container">
+    <!-- <div class="ui form form-signup-container">
+        <div class="ui form">
+            <div class="field">
+              <select>
+                <option value="" hidden >Gender</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+              </select>
+            </div>
+          </div>
+    </div> -->
+
+
+
+    <div class="form-signup-container">
+        <div class="content">
+            <div>
+                <h2>GitFit</h2>
+            </div>
+            <div class="ui large form">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Email</label>
+                        <input placeholder="email" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <input placeholder="password" type="password">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Category:</label>
+                    <select>
+                        <option value="" disabled selected>Select your option</option>
+                      <option value="1">Body Building</option>
+                      <option value="2">Power Lifting</option>
+                      <option value="3">Hypertrophy Training</option>
+                    </select>
+                  </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Height</label>
+                        <input placeholder="Height" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Weight</label>
+                        <input placeholder="Weight" type="text">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Gender:</label>
+                    <select>
+                        <option value="" disabled selected>Select your option</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                </div>
+                  <div>
+                    <button class="ui basic green button large">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <script src="/js/signup.js"></script>
+    
+
+<!-- <div class="form-signup-container">
             <div class="content">
                 <button class="ui button">
                     GitFit
@@ -72,7 +140,7 @@
                                 <input placeholder="Weight" type="text">
                             </div>
                             </div>
-                    <div class="ui form">
+                   
                         <div class="field">
                             <label>Gender</label>
                             <div class="ui selection dropdown">
@@ -85,7 +153,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                         
                                 <button class="ui basic red button">Sign Up</button>
                             </div>
@@ -93,7 +161,7 @@
                     </div>
                
             </div>
-</div>   
+</div>    -->
        
 <!-- <div class="ui container medium">
     <table class="ui large celled table">

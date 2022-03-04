@@ -41,6 +41,7 @@ router.post('/signup', async (req, res) => {
     req.session.save(() => 
     {
       req.session.loggedIn = true;
+      req.session.category = dbUserData.category_id;
 
       res.status(200).json(dbUserData);
     });
@@ -71,19 +72,20 @@ router.post('/login', async (req, res) => {
   
       const validPassword = await dbUserData.checkPassword(req.body.password);
   
-      // if (!validPassword) {
-      //   res
-      //     .status(400)
-      //     .json({ message: 'Incorrect email or password. Please try again!' });
-      //   return;
-      // }
+      if (!validPassword) {
+        res
+          .status(400)
+          .json({ message: 'Incorrect email or password. Please try again!' });
+        return;
+      }
   
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.category = dbUserData.category_id;
   
         res
           .status(200)
-          .json({ user: dbUserData, message: 'You are now logged in!' });
+          .json({ user: dbUserData, category: dbUserData.category_id, message: 'You are now logged in!' });
       });
     } catch (err) {
       console.log(err);
@@ -92,15 +94,15 @@ router.post('/login', async (req, res) => {
   });
   
   // // Logout
-  // router.post('/logout', (req, res) => {
-  //   if (req.session.loggedIn) {
-  //     req.session.destroy(() => {
-  //       res.status(204).end();
-  //     });
-  //   } else {
-  //     res.status(404).end();
-  //   }
-  // });
+  router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
   
   module.exports = router;
   
