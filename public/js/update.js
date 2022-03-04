@@ -30,11 +30,6 @@ const updateFormHandler = async (event) => {
   };
   
 
-  document.querySelector("#update").addEventListener('click', () =>
-  {
-    document.location.replace("/update");
-  });
-
   document
   .querySelector('.form')
   .addEventListener('submit', updateFormHandler);
