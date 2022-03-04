@@ -40,6 +40,11 @@ User.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "Male",
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
