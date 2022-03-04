@@ -3,6 +3,18 @@
   <div class="header m-auto">
     <h1>{{categoryData.name}} Workout Plan!</h1>
   </div>
+
+  <div class="header m-auto">
+    <h3> Nutrition information: </h3>
+    <h4>Your Basal Metabolic Rate: </br> 
+    {{{get_BMR userData}}} Calories</h4>
+
+    <h4>Your Caloric Deficit: </br> 
+    {{{getDeficit (get_BMR userData) userData}}} Calories</h4>
+
+    <h4>Your Caloric Surplus: </br> 
+    {{{getSurplus (get_BMR userData) userData}}} Calories</h4>
+  </div>
 </div>
     <table class="ui large celled table">
         <thead>

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Workout } = require('../models');
+const { Category, Workout, User } = require('../models');
 
 const withAuth = require('../utils/auth');
 
@@ -46,15 +46,18 @@ router.get('/', withAuth, async (req, res) => {
             },
         ],
       });
+
+      const dbUserData = await User.findOne({
+        where: { id: req.session.user_id }
+      });
+
+      const userData = dbUserData.get({ plain: true });
   
       const categoryData = dbWorkoutData.get({ plain: true });
-      // const categoryData = dbWorkoutData.map((info) => info.get({ plain: true }));
-
-      // res.status(200).json(categoryData);
-  
 
       res.render('homepage', {
         categoryData,
+        userData,
         loggedIn: req.session.loggedIn,
         category: req.session.category
       });
