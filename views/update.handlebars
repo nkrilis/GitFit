@@ -1,32 +1,36 @@
 <div class="form-signup-container">
-    <div class="content">
-        <button class="ui button">
-            GitFit
-        </button>
-        <div class="ui large form">
-            <div class="field">
-                <label>Category</label>
-                <div class="ui selection dropdown">
-                    <input type="hidden" name="Category">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Category</div>
-                    <div class="menu">
-                        <div class="item" data-value="1">Body Building</div>
-                        <div class="item" data-value="0">Power Lifting</div>
-                        <div class="item" data-value="2">Hypertrophy Training</div>
+        <div class="content">
+            <div>
+                <h2>GitFit</h2>
+            </div>
+            <form class="ui large form">
+                <div class="field">
+                    <label>Category:</label>
+                        <select id="category">
+                            <option value="" disabled selected>Select your option</option>
+                            <option value=1>Body Building</option>
+                            <option value=2>Power Lifting</option>
+                            <option value=3>Hypertrophy Training</option>
+                        </select>
+                  </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Height</label>
+                        <input placeholder="Height" type="number" id="height">
+                    </div>
+                    <div class="field">
+                        <label>Weight</label>
+                        <input placeholder="Weight" type="number" id="weight">
+                    </div>
+                    <div class="field">
+                        <label>Age</label>
+                        <input placeholder="Age" type="number" id="age">
                     </div>
                 </div>
-            </div>
-            <div class="two fields">
-                <div class="field">
-                    <label>Height</label>
-                    <input placeholder="Height" type="text">
-                </div>
-                <div class="field">
-                    <label>Weight</label>
-                    <input placeholder="Weight" type="text">
-                </div>
-            </div>
+                  
+                    <button class="ui basic green button large" type="submit">Update</button>
+                
+            </form>
         </div>
-    </div>
+    
 </div>
