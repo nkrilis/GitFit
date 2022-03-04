@@ -22,10 +22,12 @@ router.get('/signup', (req, res) =>
   res.render('signup');
 });
 
-router.get('/update', (req, res) => 
+router.get('/update', withAuth, (req, res) => 
 {
   if (req.session.loggedIn) {
-    res.render('update');
+    res.render('update', {
+      loggedIn: req.session.loggedIn,
+    });
     return;
   }
 

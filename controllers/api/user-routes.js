@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+const withAuth = require('../../utils/auth');
+
 
 router.post('/', async (req, res) => {
   try 
@@ -23,15 +25,38 @@ router.post('/', async (req, res) => {
   }
 });
 
-// router.put('/update', (req, res) => 
-// {
-//   if (req.session.loggedIn) {
-//     res.redirect('/');
-//     return;
-//   }
+router.put('/update', withAuth, async (req, res) => 
+{
+  try{
+    const dbUserData = await User.update(
+      {
+        height: req.body.height,
+        weight: req.body.weight,
+        age: req.body.age,
+        category_id: req.body.category_id
+      },
+      {
+        where: {id: req.session.user_id}
+      });
 
-//   res.render('update');
-// });
+      if (!dbUserData)
+      {
+        res.status(500).json({message: "User not updated"});
+      }
+
+      req.session.save(() => {
+        req.session.loggedIn = true;
+        req.session.category = req.body.category_id;
+
+        res.status(200).json({message: "Updated successfully"});
+      });
+  }
+  catch(err)
+  {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
   // Login
 router.post('/login', async (req, res) => {
@@ -61,6 +86,7 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.loggedIn = true;
         req.session.category = dbUserData.category_id;
+        req.session.user_id = dbUserData.id;
   
         res
           .status(200)
