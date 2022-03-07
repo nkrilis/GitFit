@@ -22,16 +22,28 @@ router.get('/signup', (req, res) =>
   res.render('signup');
 });
 
-router.get('/update', withAuth, (req, res) => 
+router.get('/update', withAuth, async (req, res) => 
 {
-  if (req.session.loggedIn) {
+  try{
+
+    const dbUserData = await User.findOne({
+      where: { id: req.session.user_id }
+    });
+
+    const userData = dbUserData.get({ plain: true });
+
     res.render('update', {
+      userData,
       loggedIn: req.session.loggedIn,
     });
-    return;
+      
   }
-
-  res.redirect('/');
+  catch(err)
+  {
+    console.log(err);
+    res.status(500).json(err);
+  }
+  
 });
 
 
